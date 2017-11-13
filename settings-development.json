@@ -1,6 +1,9 @@
 {
   "public": {},
   "private": {
+    "email": {
+      "sendMailOnUserCreate": false
+    },
     "MAIL_URL": "",
     "OAuth": {
       "facebook": {

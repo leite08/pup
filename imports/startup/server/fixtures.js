@@ -2,11 +2,14 @@ import seeder from '@cleverbeagle/seeder';
 import { Meteor } from 'meteor/meteor';
 import Documents from '../../api/Documents/Documents';
 
+const wipe = true;
+
 const documentsSeed = userId => ({
   collection: Documents,
   environments: ['development', 'staging'],
   noLimit: true,
-  modelCount: 5,
+  wipe: wipe,
+  modelCount: 50,
   model(dataIndex) {
     return {
       owner: userId,
@@ -19,9 +22,10 @@ const documentsSeed = userId => ({
 seeder(Meteor.users, {
   environments: ['development', 'staging'],
   noLimit: true,
+  wipe: wipe,
   data: [{
-    email: 'admin@admin.com',
-    password: 'password',
+    email: 'leite08@gmail.com',
+    password: 'leite',
     profile: {
       name: {
         first: 'Andy',
@@ -33,22 +37,22 @@ seeder(Meteor.users, {
       return documentsSeed(userId);
     },
   }],
-  modelCount: 5,
-  model(index, faker) {
-    const userCount = index + 1;
-    return {
-      email: `user+${userCount}@test.com`,
-      password: 'password',
-      profile: {
-        name: {
-          first: faker.name.firstName(),
-          last: faker.name.lastName(),
-        },
-      },
-      roles: ['user'],
-      data(userId) {
-        return documentsSeed(userId);
-      },
-    };
-  },
+  // modelCount: 5,
+  // model(index, faker) {
+  //   const userCount = index + 1;
+  //   return {
+  //     email: `user+${userCount}@test.com`,
+  //     password: 'password',
+  //     profile: {
+  //       name: {
+  //         first: faker.name.firstName(),
+  //         last: faker.name.lastName(),
+  //       },
+  //     },
+  //     roles: ['user'],
+  //     data(userId) {
+  //       return documentsSeed(userId);
+  //     },
+  //   };
+  // },
 });

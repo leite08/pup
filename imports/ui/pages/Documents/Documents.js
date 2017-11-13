@@ -84,8 +84,10 @@ Documents.propTypes = {
 
 export default withTracker(() => {
   const subscription = Meteor.subscribe('documents');
+  let docs = DocumentsCollection.find().fetch();
+  console.log('[Documents list] docs.length:' + docs.length);
   return {
     loading: !subscription.ready(),
-    documents: DocumentsCollection.find().fetch(),
+    documents: docs,
   };
 })(Documents);

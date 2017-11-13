@@ -3,8 +3,12 @@ import sendEmail from '../../../modules/server/send-email';
 import getOAuthProfile from '../../../modules/get-oauth-profile';
 
 export default (options, user) => {
+  if (!Meteor.settings.private.email.sendMailOnUserCreate) {
+    // TODO change for logging: https://atmospherejs.com/jag/pince
+    console.log('Not sending emails on user creation');
+    return;
+  }
   const OAuthProfile = getOAuthProfile(options, user);
-
   const applicationName = 'Application Name';
   const firstName = OAuthProfile ? OAuthProfile.name.first : options.profile.name.first;
   const emailAddress = OAuthProfile ? OAuthProfile.email : options.email;
