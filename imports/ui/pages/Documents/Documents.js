@@ -11,6 +11,8 @@ import Loading from '../../components/Loading/Loading';
 
 import './Documents.scss';
 
+// import BootstrapPaginator from 'react-bootstrap-pagination';
+
 const handleRemove = (documentId) => {
   if (confirm('Are you sure? This is permanent!')) {
     Meteor.call('documents.remove', documentId, (error) => {
@@ -22,6 +24,47 @@ const handleRemove = (documentId) => {
     });
   }
 };
+
+// const Documents = React.createClass({
+//   mixins: [ReactMeteorData],
+
+//   pagination: new Meteor.Pagination(Documents),
+
+//   getMeteorData: function() {
+//       return {
+//           documents: this.pagination.getPage(),
+//           ready: this.pagination.ready()
+//       };
+//   },
+
+//   renderDocument: function(document) {
+//       return (
+//           <li>Document #{document._id} - #{document.title}</li>
+//       );
+//   },
+
+//   render: function() {
+//     if (!this.pagination.ready()) {
+//       return (
+//           <div>Loading...</div>
+//       );
+//     }
+
+//     return (!loading ? (
+//         <div>
+//           <ul>
+//               {this.data.documents.map(this.renderDocument)}
+//           </ul>
+//           <DefaultBootstrapPaginator
+//               pagination={this.pagination}
+//               limit={10}
+//               containerClass="text-center"
+//               />
+//         </div>
+//       ) : <Loading />
+//     );
+//   }
+// });
 
 const Documents = ({
   loading, documents, match, history,

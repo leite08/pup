@@ -2,7 +2,7 @@ import seeder from '@cleverbeagle/seeder';
 import { Meteor } from 'meteor/meteor';
 import Documents from '../../api/Documents/Documents';
 
-const wipe = true;
+const wipe = false;
 
 const documentsSeed = userId => ({
   collection: Documents,

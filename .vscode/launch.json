@@ -8,7 +8,8 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/settings-development.json"
+            "cwd": "${workspaceFolder}",
+            "program": "meteor -s settings-development.json"
         }
     ]
 }

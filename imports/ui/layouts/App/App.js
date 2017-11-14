@@ -29,6 +29,7 @@ import Privacy from '../../pages/Privacy/Privacy';
 import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 import VerifyEmailAlert from '../../components/VerifyEmailAlert/VerifyEmailAlert';
 import getUserName from '../../../modules/get-user-name';
+import Abacates from '../../pages/Abacates/Abacates';
 
 import './App.scss';
 
@@ -47,6 +48,7 @@ const App = props => (
         <Grid>
           <Switch>
             <Route exact name="index" path="/" component={Index} />
+            <Authenticated exact path="/abacates" component={Abacates} {...props} />
             <Authenticated exact path="/documents" component={Documents} {...props} />
             <Authenticated exact path="/documents/new" component={NewDocument} {...props} />
             <Authenticated exact path="/documents/:_id" component={ViewDocument} {...props} />
